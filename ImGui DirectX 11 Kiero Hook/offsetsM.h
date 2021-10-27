@@ -5,6 +5,6 @@
 class offsetsM
 {
 public:
-	DWORD GetPointerAddress(DWORD ptr, std::vector<DWORD> offsets);
-	void nopBytes(DWORD address, int size);
+	static DWORD GetPointerAddress(DWORD ptr, std::vector<DWORD> offsets);
+	static void nopBytes(DWORD address, int size);
 };

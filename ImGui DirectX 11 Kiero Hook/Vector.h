@@ -19,6 +19,10 @@ public:
 class VectorSkelet
 {
 public:
-	float xH, yH, xB, yB, xBB, yBB, xAH, yAH, xLA1, yLA1, xLA2, yLA2, xRA2, yRA2, xRA3, yRA3, xLl1, yLL1, xRl1, yRL1, xLl2, yLL2, xRl2, yRL2, xLl3, yLL3, xRl3, yRL3, Status, xHUP, yHUP;
-
+	app::Vector2 bone[15];
+};
+class Vector2WH
+{
+public:
+	app::Vector2 pos[2];
 };

@@ -162,6 +162,7 @@
     <ClCompile Include="framework\il2cpp-init.cpp" />
     <ClCompile Include="framework\pch-il2cpp.cpp" />
     <ClCompile Include="Freecam.cpp" />
+    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="goThrowWall.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_animated.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Aim.h" />
     <ClInclude Include="AutomaticW.h" />
     <ClInclude Include="Bhop.h" />
+    <ClInclude Include="Bines.h" />
     <ClInclude Include="ChangeWeaponScale.h" />
     <ClInclude Include="Crash.h" />
     <ClInclude Include="Cross.h" />
@@ -209,6 +211,7 @@
     <ClInclude Include="framework\il2cpp-appdata.h" />
     <ClInclude Include="framework\pch-il2cpp.h" />
     <ClInclude Include="Freecam.h" />
+    <ClInclude Include="Functions.h" />
     <ClInclude Include="goThrowWall.h" />
     <ClInclude Include="imgui\imgui_animated.h" />
     <ClInclude Include="MaxScoup.h" />

@@ -1,11 +1,13 @@
 #pragma once
 #include "Vector.h"
+#include "framework/il2cpp-appdata.h"
+
 
 class WallHack
 {
 public:	
 	void Render();
-	Vector2 GetPlayerPos(int i);
+	Vector2WH GetPlayerPos(int i);
 	int selectiedFigure = 0;
 	bool teamcheck = false;
 	float colorWh[4] = { 0.780f, 0.031f, 0.756f,1.0f };
@@ -21,3 +23,16 @@ public:
 	char Pname[32];
 	char ANTICRASH[64];
 };
+
+class myCameraS {
+public:
+	char pad[0x3b4];
+	app::Vector3 campos;
+};
+
+class cscameraS {
+public:
+	char pad[8];
+	myCameraS* camira;
+};
+

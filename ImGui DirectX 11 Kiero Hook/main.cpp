@@ -119,22 +119,22 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	{
 
 		ImGui::Begin("BLOCKPOST-US");
-		if (ImGui::Button((u8"Aim"), ImVec2(100.f, 0.f)))
+		if (ImGui::Button(("Aim"), ImVec2(100.f, 0.f)))
 			tabb = 0;
 		ImGui::SameLine(0.f, 2.f);
-		if (ImGui::Button((u8"Visuals"), ImVec2(100.f, 0.f)))
+		if (ImGui::Button(("Visuals"), ImVec2(100.f, 0.f)))
 			tabb = 1;
 		ImGui::SameLine(0.f, 2.f);
-		if (ImGui::Button((u8"Misc"), ImVec2(100.f, 0.f)))
+		if (ImGui::Button(("Misc"), ImVec2(100.f, 0.f)))
 			tabb = 2;
 		ImGui::SameLine(0.f, 2.f);
-		if (ImGui::Button((u8"Info"), ImVec2(100.f, 0.f)))
+		if (ImGui::Button(("Info"), ImVec2(100.f, 0.f)))
 			tabb = 3;
 		ImGui::SameLine(0.f, 2.f);
-		if (ImGui::Button((u8"CFG"), ImVec2(100.f, 0.f)))
+		if (ImGui::Button(("CFG"), ImVec2(100.f, 0.f)))
 			tabb = 4;
 		ImGui::SameLine(0.f, 2.f);
-		if (ImGui::Button((u8"COLORS"), ImVec2(100.f, 0.f)))
+		if (ImGui::Button(("COLORS"), ImVec2(100.f, 0.f)))
 			tabb = 5;
 		if (tabb == 0) {
 			
@@ -149,8 +149,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 			ImGui::Toggle("Skelet (DONT WORK WITH ANTICRASH!)", &Settings.Skelet);
 			ImGui::Toggle("TeamCheck", &Settings.TeamCheck);
 			ImGui::Toggle("Tracer", &Settings.Tracer);
-			ImGui::SliderFloat("LineSize", &Settings.LineSize, 0, 10);		
-			ImGui::Combo("figure", &wall.selectiedFigure, Figure, 4);			
+			ImGui::SliderFloat("LineSize", &Settings.LineSize, 0, 10);			
 			ImGui::SliderFloat("Fov", &fovview.viewFov, 0, 360);
 
 
@@ -344,7 +343,9 @@ DWORD WINAPI FreeCamThread(HMODULE hMod)
 }
 DWORD WINAPI FunctTread(HMODULE hMod)
 {
-
+	AllocConsole();
+	FILE* f;
+	freopen_s(&f, "CONOUT$", "w", stdout);
 	AutomaticW asdddd; 
 	DWORD OldProtection;
 	uintptr_t baseModule = reinterpret_cast<uintptr_t>(GetModuleHandle(TEXT("GameAssembly.dll")));
