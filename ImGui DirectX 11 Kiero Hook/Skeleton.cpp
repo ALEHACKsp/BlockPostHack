@@ -81,6 +81,24 @@ VectorSkelet Skeleton::GetBones(int i)
 	}
 	return posArray;
 }
+int Skeleton::GetPlayerIsSpawnprotect(int i)
+{
+	app::PlayerData* enemy = Functions::GetPlayerData(i);
+	if (Functions::GetEnemyLive(i) == false)
+		return -1;
+	if (teamcheck == true)
+	{
+		if ((*app::Controll__TypeInfo)->static_fields->pl->fields.team == enemy->fields.team)
+		{
+			return -1;
+		}
+	}
+	if (enemy->fields.spawnprotect)
+	{
+		return 1;
+	}
+	return 0;
+}
 void Skeleton::Render()
 {
 	for (int i = 0; i < 40; i++)
@@ -93,12 +111,23 @@ void Skeleton::Render()
 				VectorSkelet null = is_null();
 				if (Temper.bone[0].x == null.bone[0].x)
 					continue;
-				ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[0].x,Temper.bone[0].y }, { Temper.bone[1].x,Temper.bone[1].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
-				//ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[1].x,Temper.bone[1].y }, { Temper.bone[3].x,Temper.bone[3].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
-				ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[11].x,Temper.bone[11].y }, { Temper.bone[6].x,Temper.bone[6].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
-				ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[11].x,Temper.bone[11].y }, { Temper.bone[7].x,Temper.bone[7].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
-				ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[1].x,Temper.bone[1].y }, { Temper.bone[8].x,Temper.bone[8].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
-				ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[1].x,Temper.bone[1].y }, { Temper.bone[9].x,Temper.bone[9].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);			
+				int SpawnProtectEnemy = GetPlayerIsSpawnprotect(i);
+				if (SpawnProtectEnemy == 0)
+				{
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[0].x,Temper.bone[0].y }, { Temper.bone[1].x,Temper.bone[1].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[11].x,Temper.bone[11].y }, { Temper.bone[6].x,Temper.bone[6].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[11].x,Temper.bone[11].y }, { Temper.bone[7].x,Temper.bone[7].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[1].x,Temper.bone[1].y }, { Temper.bone[8].x,Temper.bone[8].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[1].x,Temper.bone[1].y }, { Temper.bone[9].x,Temper.bone[9].y }, ImColor{ colorSkelet[0],colorSkelet[1],colorSkelet[2],colorSkelet[3] }, 2.f);
+				}
+				if (SpawnProtectEnemy == 1)
+				{
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[0].x,Temper.bone[0].y }, { Temper.bone[1].x,Temper.bone[1].y }, ImColor{ colorSkeletS[0],colorSkeletS[1],colorSkeletS[2],colorSkeletS[3] }, 2.f);					
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[11].x,Temper.bone[11].y }, { Temper.bone[6].x,Temper.bone[6].y }, ImColor{ colorSkeletS[0],colorSkeletS[1],colorSkeletS[2],colorSkeletS[3] }, 2.f);
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[11].x,Temper.bone[11].y }, { Temper.bone[7].x,Temper.bone[7].y }, ImColor{ colorSkeletS[0],colorSkeletS[1],colorSkeletS[2],colorSkeletS[3] }, 2.f);
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[1].x,Temper.bone[1].y }, { Temper.bone[8].x,Temper.bone[8].y }, ImColor{ colorSkeletS[0],colorSkeletS[1],colorSkeletS[2],colorSkeletS[3] }, 2.f);
+					ImGui::GetBackgroundDrawList()->AddLine({ Temper.bone[1].x,Temper.bone[1].y }, { Temper.bone[9].x,Temper.bone[9].y }, ImColor{ colorSkeletS[0],colorSkeletS[1],colorSkeletS[2],colorSkeletS[3] }, 2.f);
+				}			
 			}
 		}		
 	}

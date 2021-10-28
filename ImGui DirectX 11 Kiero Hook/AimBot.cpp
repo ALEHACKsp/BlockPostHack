@@ -42,7 +42,8 @@ void AimBot::Render()
 
         app::PlayerData* enemy = Functions::GetPlayerData(i);
         cscamera* mycam = (cscamera*)(*app::Controll__TypeInfo)->static_fields->csCam;
-
+        if (enemy == nullptr)
+            return;
         if (enemy->fields.currPos.x == 0)
             continue;
         if (enemy->fields.team == (*app::Controll__TypeInfo)->static_fields->pl->fields.team && teamcheck == true)
@@ -91,7 +92,15 @@ void AimBot::Render()
                         break;
                     }
                     else {
-                        SetView(AngletoTarger);
+                        if (visiblecheck)
+                        {
+                            if(enemy->fields.leg_limit == 46)
+                                SetView(AngletoTarger);
+                        }
+                        else
+                        {
+                            SetView(AngletoTarger);
+                        }
                     }
                 }
                 else

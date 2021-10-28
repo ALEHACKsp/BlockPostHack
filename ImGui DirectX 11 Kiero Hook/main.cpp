@@ -117,7 +117,7 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 	}
 	if (show)
 	{
-
+		ImGui::GetBackgroundDrawList()->AddText({ 0,0 }, ImColor{ 10, 63, 255,255 }, "EZHACKBYSCUB");
 		ImGui::Begin("BLOCKPOST-US");
 		if (ImGui::Button(("Aim"), ImVec2(100.f, 0.f)))
 			tabb = 0;
@@ -141,11 +141,13 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 			ImGui::Toggle("AimBot", &Settings.AimActive);
 			ImGui::Toggle("AimBotKey", &Settings.AimKeyActive);
 			ImGui::Toggle("TeamCheck", &Settings.TeamCheck);
+			ImGui::Toggle("Visible Check", &aim.visiblecheck);
 			ImGui::SliderFloat("Distance", &Settings.Dinstace, 1, 250);
 			ImGui::SliderFloat("AimFov", &Settings.fov, 2.8, 360);
 		}
 		else if (tabb == 1) {
 			ImGui::Toggle("WallHack", &Settings.Wallhack);
+			ImGui::Toggle("Visible Check", &wall.visibleCheck);
 			ImGui::Toggle("Skelet (DONT WORK WITH ANTICRASH!)", &Settings.Skelet);
 			ImGui::Toggle("TeamCheck", &Settings.TeamCheck);
 			ImGui::Toggle("Tracer", &Settings.Tracer);
@@ -434,7 +436,7 @@ DWORD WINAPI ConfigThread(HMODULE hMod)
 		
 		
 		fovview.Start();
-		app::RenderSettings_set_ambientSkyColor(app::Color{ colorSkyLight[0], colorSkyLight[1], colorSkyLight[2],colorSkyLight[3] }, nullptr);
+		//app::RenderSettings_set_ambientSkyColor(app::Color{ colorSkyLight[0], colorSkyLight[1], colorSkyLight[2],colorSkyLight[3] }, nullptr);
 		
 		if (Settings.saveconfig)
 		{

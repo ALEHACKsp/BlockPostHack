@@ -10,6 +10,7 @@ public:
 	void Render();
 	bool toggle = false;
 	bool teamcheck = false;
+	bool visiblecheck;
 	float distanceFov = 40;
 	float fov = 1;
 	float dist;	
